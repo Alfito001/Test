@@ -1,0 +1,101 @@
+//file1exercise
+
+package session5;
+
+import java.util.HashMap;
+import java.util.Hashmap;
+
+public class exercise5 {
+	private String storeId;
+	private String storeName;
+	private int maxItem;
+	private HashMap<String ,item> soldItem;
+	
+	public Grocer (String id, String name, int maxItem) {
+		storeId = id;
+		storeName = name;
+		this.maxItem = maxItem;
+		soldItem = new HashMap<item>();
+	}
+	
+	public String getId() {
+		return storeId;
+	}
+	public String getName() {
+		return storeName;
+	}
+	public HashMap<Item> getItems() {
+		return soldItem;
+	}
+	public void updateName(String newName() {
+		storeName = newName;
+	}
+	
+	public void insertItem(String id, String name, String brand, double price, int qty) {
+		if(soldItem.containsKey(id)) {
+			System.out.println("Item exists in this grocer: ");
+			return;
+		}
+		if(calculateItem() qty > maxItem) {
+			System.out.println("Grocery cannot store more item.");
+			return;
+		}
+		soldItem.put(id, new Item(id, name, brand))
+	}
+
+}
+
+
+//file2Item
+
+package session5;
+
+public class item {
+	private String itemId;
+	private String itemName;
+	private String itemBrand;
+	private double itemPrice;
+	private double itemQty;
+
+	public void Item(String id, 
+			String name, 
+			String brand, 
+			double price, 
+			double qty) {
+		itemId = id;
+		itemName = name;
+		itemBrand = brand;
+		itemPrice = price;
+		itemQty = qty;
+	}
+	
+	public String getId() {
+		return itemId;
+	}
+	public String getName() {
+		return itemName;
+	}
+	public String getBrand() {
+		return itemBrand;
+	}
+	public double getPrice() {
+		return itemPrice;
+	}
+	public int getQty() {
+		return itemQty;
+	}
+	
+	public void setName(String newName) {
+		itemName = newName;
+	}
+	public void setBrand(String newBrand) {
+		itemBrand = newBrand;
+	}
+	public void setPrice(double newPrice) {
+		itemPrice = newPrice;
+	}
+	public void setQty(double newQty) {
+		itemQty = newQty;
+	}
+
+}
