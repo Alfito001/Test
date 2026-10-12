@@ -1,0 +1,71 @@
+//Utils/OrderManagement.java
+package Utils;
+
+import Models.Book;
+import Models.Order;
+import Models.User;
+import java.util.HashMap;
+
+public class OrderManagement {
+    
+    public static void addOrder(HashMap<Integer, Order> orders, User user, Book book) {
+        int newId = orders.size() + 1;
+        Order newOrder = new Order(newId, user);
+        newOrder.books.put(book.id, book);
+        orders.put(newId, newOrder);
+    }
+    
+    public static void removeOrder(HashMap<Integer, Order> orders, Integer orderId) {
+        orders.remove(orderId);
+    }
+}
+
+//Utils/DisplayData.java
+package Utils;
+
+import Models.Book;
+import Models.Order;
+import Models.User;
+import java.util.HashMap;
+
+public class DisplayData {
+    
+    public static void displayOrders(HashMap<Integer, Order> orders) {
+        for (Integer key : orders.keySet()) {
+            displayOrderDetail(orders, key);
+        }
+    }
+    
+    public static void displayOrderDetail(HashMap<Integer, Order> orders, Integer orderId) {
+        Order order = orders.get(orderId);
+        if (order != null) {
+            System.out.println("Order ID: " + order.id + ", User: " + order.user.name + ", Total Books: " + order.books.size());
+        }
+    }
+    
+    public static void displayBooks(HashMap<Integer, Book> books) {
+        for (Integer key : books.keySet()) {
+            displayBookDetail(books, key);
+        }
+    }
+    
+    public static void displayBookDetail(HashMap<Integer, Book> books, Integer bookId) {
+        Book book = books.get(bookId);
+        if (book != null) {
+            System.out.println("Book ID: " + book.id + ", Title: " + book.title + ", Author: " + book.author + ", Year: " + book.yearPublished);
+        }
+    }
+    
+    public static void displayUsers(HashMap<Integer, User> users) {
+        for (Integer key : users.keySet()) {
+            displayUserDetail(users, key);
+        }
+    }
+    
+    public static void displayUserDetail(HashMap<Integer, User> users, Integer userId) {
+        User user = users.get(userId);
+        if (user != null) {
+            System.out.println("User ID: " + user.id + ", Name: " + user.name + ", Email: " + user.email + ", Username: " + user.username);
+        }
+    }
+}
